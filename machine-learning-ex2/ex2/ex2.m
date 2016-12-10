@@ -54,6 +54,11 @@ pause;
 %  for logistic regression. You neeed to complete the code in 
 %  costFunction.m
 
+fprintf('\nsigmoid.\n');
+disp(sigmoid(0))
+fprintf('\nProgram paused. Press enter to continue.\n');
+pause;
+
 %  Setup the data matrix appropriately, and add ones for the intercept term
 [m, n] = size(X);
 

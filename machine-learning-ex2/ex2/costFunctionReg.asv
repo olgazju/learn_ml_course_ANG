@@ -21,12 +21,22 @@ grad = zeros(size(theta));
 [J_original, grad_original] = costFunction(theta, X, y);
 
 % make theta(0) to be zero, so regression is not calculated for it.
-theta_partial = [ 0; theta(2:end) ];
+%theta_partial = [ 0; theta(2:1:end,:) ];
+%theta_partial = [ 0; theta(2:end) ];
+theta_partial = [ 0; theta(2:1:end,:) ];
 
-J = J_original + ((lambda/(2*m)) * (sum(theta_partial.^2)));
+% theta_partial n x 1
 
-% grad_original n+1 x 1 plus theta_partial n+1 x 1
-grad = grad_original + (lambda/m * theta_partial);
+fprintf('size theta_partial: %f\n', size(theta_partial));
+
+J = J_original + ((lambda/(2*m)) * (theta_partial'*theta_partial));
+
+fprintf('size grad_original: %f\n', size(grad_original));
+
+grad = grad_original + (lambda/m * theta_partial');
+fprintf('size grad_original: %f\n', size(grad));
+
+
 
 % =============================================================
 
